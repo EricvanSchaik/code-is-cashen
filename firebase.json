@@ -1,5 +1,6 @@
 {
   "hosting": {
+    "site": "code-is-cashen",
     "public": "dist",
     "ignore": [
       "firebase.json",
