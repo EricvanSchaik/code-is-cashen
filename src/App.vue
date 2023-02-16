@@ -46,6 +46,7 @@
           <v-col>
             <IntroText/>
             <PreviousCodes/>
+            <CodeForm/>
           </v-col>
         </v-row>
       </v-container>
@@ -57,6 +58,7 @@
 import CodeOptions from './components/CodeOptions.vue';
 import PreviousCodes from './components/PreviousCodes.vue';
 import IntroText from './components/IntroText.vue';
+import CodeForm from './components/CodeForm.vue';
 
 export default {
   name: 'App',
@@ -65,6 +67,7 @@ export default {
     CodeOptions,
     PreviousCodes,
     IntroText,
+    CodeForm,
   },
 
   data: () => ({
