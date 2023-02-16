@@ -37,20 +37,34 @@
       </v-btn>
     </v-app-bar>
 
-    <v-main>
-      <HelloWorld/>
+    <v-main class="grey lighten-3">
+      <v-container>
+        <v-row>
+          <v-col cols="2">
+            <CodeOptions/>
+          </v-col>
+          <v-col>
+            <IntroText/>
+            <PreviousCodes/>
+          </v-col>
+        </v-row>
+      </v-container>
     </v-main>
   </v-app>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld';
+import CodeOptions from './components/CodeOptions.vue';
+import PreviousCodes from './components/PreviousCodes.vue';
+import IntroText from './components/IntroText.vue';
 
 export default {
   name: 'App',
 
   components: {
-    HelloWorld,
+    CodeOptions,
+    PreviousCodes,
+    IntroText,
   },
 
   data: () => ({
