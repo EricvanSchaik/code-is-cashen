@@ -10,7 +10,7 @@
       >
         <v-list-item-content>
           <v-list-item-title>
-            List Item {{ n }}
+            Code Option {{ n }}
           </v-list-item-title>
         </v-list-item-content>
       </v-list-item>

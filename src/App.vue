@@ -45,7 +45,9 @@
           </v-col>
           <v-col>
             <IntroText/>
+            <v-divider class="my-2"></v-divider>
             <PreviousCodes/>
+            <v-divider class="my-2"></v-divider>
             <CodeForm/>
           </v-col>
         </v-row>
