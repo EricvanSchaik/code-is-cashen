@@ -48,7 +48,7 @@
             <v-divider class="my-2"></v-divider>
             <PreviousCodes/>
             <v-divider class="my-2"></v-divider>
-            <CodeForm/>
+            <AddCode/>
           </v-col>
         </v-row>
       </v-container>
@@ -60,7 +60,7 @@
 import CodeOptions from './components/CodeOptions.vue';
 import PreviousCodes from './components/PreviousCodes.vue';
 import IntroText from './components/IntroText.vue';
-import CodeForm from './components/CodeForm.vue';
+import AddCode from './components/AddCode.vue';
 
 export default {
   name: 'App',
@@ -69,7 +69,7 @@ export default {
     CodeOptions,
     PreviousCodes,
     IntroText,
-    CodeForm,
+    AddCode,
   },
 
   data: () => ({
