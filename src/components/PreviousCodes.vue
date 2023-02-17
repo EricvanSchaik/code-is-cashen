@@ -3,44 +3,82 @@
     rounded="lg"
     height="500"
   >
-    <v-row class="my-2">
-      <v-col cols="1">
-        <v-list class="text-center">
-          <v-header>
+    <v-row justify="space-around"> 
+      <v-col md="2">
+        <v-sheet class="text-center">
+          <div class="text-h4">
             Delete
-          </v-header>
-        </v-list>
+          </div>
+        </v-sheet>
       </v-col>
-      <v-col cols="9">
-        <v-header class="text-center">Previous Codes</v-header>
-        <v-list color="transparent" class="overflow-y-auto" max-height="400">
+      <v-col md="6">
+        <v-sheet class="text-center">
+          <div class="text-h4">
+            Previous Codes
+          </div>
+        </v-sheet>
+      </v-col>
+      <v-col md="2">
+        <v-sheet class="text-center">
+          <div class="text-h4">
+            Correct
+          </div>
+        </v-sheet>
+      </v-col>
+    </v-row>
+    <v-divider class="my-2"></v-divider>
+    <v-list class="overflow-y-auto" max-height="400">
+      <v-list-item-group>
+        <template>
           <v-list-item
             v-for="n in 10"
             :key="n"
           >
-            <v-list-item-content>
-              <v-list-item-title>
-                {{ n }} - {{ n }} - {{ n }} - {{ n }} - {{ n }} 
-              </v-list-item-title>
-            </v-list-item-content>
+            <v-row justify="space-around">
+              <v-col md="2" class="d-flex justify-center" style="flex-direction: column;">  
+                <v-btn color="error" plain>
+                  Delete
+                </v-btn>
+              </v-col>
+              <v-col md="6">
+                <v-sheet class="d-flex justify-space-around">
+                  <v-card class="pa-2 ma-2"
+                    v-for="i in 5"
+                    :key="i"
+                  >
+                  <div class="text-h5">
+                    {{ n }}
+                  </div>
+                  </v-card>
+                </v-sheet>
+              </v-col>
+              <v-col md="2">
+                <v-sheet class="d-flex justify-space-around">
+                  <v-card class="pa-2 ma-2">
+                    <div class="text-h5">
+                      {{ n }}
+                    </div>
+                  </v-card>
+                </v-sheet>
+              </v-col>
+            </v-row>
           </v-list-item>
           <v-list-item id="last">
-            <v-list-content>
-              <v-list-title>
-                Last one
-              </v-list-title>
-            </v-list-content>
-          </v-list-item>
-        </v-list>
-      </v-col>
-      <v-col cols="2">
-        <v-list class="text-center">
-          <v-header>
-            Amount of numbers correct
-          </v-header>
-        </v-list>
-      </v-col>
-    </v-row>
+            <v-row justify="space-around">
+              <v-col md="2" class="text-center">
+                X
+              </v-col>
+              <v-col md="6" class="text-center">
+                Last
+              </v-col>
+              <v-col md="2" class="text-center">
+                X
+              </v-col>
+              </v-row>
+            </v-list-item>
+        </template>
+      </v-list-item-group>
+    </v-list>
   </v-sheet>
 </template>
 
