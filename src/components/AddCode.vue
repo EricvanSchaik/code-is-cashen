@@ -1,34 +1,29 @@
 <template>
-  <container>
-    <v-row justify="space-around">
-      <v-col md="2">
-      </v-col>
-      <v-col md="6">
-        <v-sheet class="d-flex justify-space-around" color="transparent">
-          <v-card class="pa-2 ma-2"
-            v-for="i in 5"
-            :key="i"
-          >
-          <div class="text-h5">
-            {{ i }}
-          </div>
-          </v-card>
-        </v-sheet>
-      </v-col>
-      <v-col md="2">
-        <v-sheet class="d-flex justify-space-around" color="transparent">
-          <v-card class="pa-2 my-2 mr-11">
-            <div class="text-h5">
-              0
-            </div>
-          </v-card>
-        </v-sheet>
-      </v-col>
-    </v-row>
-    <v-row justify="center">
+  <v-container style="padding:0px">
+    <v-sheet rounded="lg" class="pa-2">
+      <v-row justify="space-around">
+        <v-col md="2">
+        </v-col>
+        <v-col md="6">
+          <v-sheet class="d-flex justify-space-around mr-4" color="transparent">
+            <v-text-field outlined style="max-width: 5%;"
+              v-for="i in 5"
+              :key="i"
+            >
+            </v-text-field>
+          </v-sheet>
+        </v-col>
+        <v-col md="2">
+          <v-sheet class="d-flex justify-space-around mr-8" color="transparent">
+            <v-text-field outlined style="max-width: 20%"></v-text-field>
+          </v-sheet>
+        </v-col>
+      </v-row>
+    </v-sheet>
+    <v-row justify="center" style="margin:10px">
       <v-btn @click="scroll">Add Code</v-btn>
     </v-row>
-  </container>
+  </v-container>
 </template>
 
 <script>
