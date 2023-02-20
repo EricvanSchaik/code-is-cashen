@@ -1,6 +1,6 @@
 <template>
   <v-container style="padding:0px">
-    <v-sheet rounded="lg" class="pa-2">
+    <v-sheet rounded="lg" class="pt-5 pb-1">
       <v-row justify="space-around">
         <v-col md="2">
         </v-col>
@@ -20,7 +20,7 @@
         </v-col>
       </v-row>
     </v-sheet>
-    <v-row justify="center" style="margin:10px">
+    <v-row justify="center" style="margin:20px">
       <v-btn @click="scroll">Add Code</v-btn>
     </v-row>
   </v-container>
