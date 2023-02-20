@@ -6,16 +6,17 @@
         </v-col>
         <v-col md="6">
           <v-sheet class="d-flex justify-space-around mr-4" color="transparent">
-            <v-text-field outlined style="max-width: 5%;"
+            <v-text-field outlined style="max-width: 5%;" @keypress="addNumber" maxlength="1"
               v-for="i in 5"
               :key="i"
+              :id="'code'+i.toString()"
             >
             </v-text-field>
           </v-sheet>
         </v-col>
         <v-col md="2">
           <v-sheet class="d-flex justify-space-around mr-8" color="transparent">
-            <v-text-field outlined style="max-width: 20%"></v-text-field>
+            <v-text-field outlined style="max-width: 20%" maxlength="1"></v-text-field>
           </v-sheet>
         </v-col>
       </v-row>
@@ -32,7 +33,15 @@ export default {
   methods: {
     scroll() {
       this.$nextTick(() => document.getElementById('last').scrollIntoView())
+    },
+    addNumber(event) {
+      if (/^\d$/.test(event.key.toString())) {
+        console.log(event.srcElement.id);
+      }
+      else {
+        event.preventDefault();
+      }
     }
-  }
+  },
 }
 </script>
