@@ -37,7 +37,7 @@ export default {
   methods: {
     addCode() {
       if (!this.numbers.some(el => el === null) && this.correct && this.correct < 6) {
-        this.$emit('addCode', this.numbers, this.correct)
+        this.$emit('addCode', [...this.numbers], this.correct)
         this.$nextTick(() => {
           let pc = document.getElementsByClassName('previousCode')
           return pc.item(pc.length - 1).scrollIntoView()
@@ -46,8 +46,8 @@ export default {
     },
     addNumber(event) {
       if (/^\d$/.test(event.key.toString())) {
-        let index = event.srcElement.id[4]
-        this.numbers[index-1] = event.key.toString()
+        const numberIndex = event.srcElement.id[4]
+        this.numbers[numberIndex-1] = event.key.toString()
       }
       else {
         event.preventDefault();
