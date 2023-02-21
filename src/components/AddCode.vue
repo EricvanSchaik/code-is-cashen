@@ -15,14 +15,14 @@
           </v-sheet>
         </v-col>
         <v-col md="2">
-          <v-sheet class="d-flex justify-space-around mr-8" color="transparent">
+          <v-sheet class="d-flex justify-space-around" color="transparent" style="margin-right: 50px">
             <v-text-field outlined style="max-width: 20%" maxlength="1"></v-text-field>
           </v-sheet>
         </v-col>
       </v-row>
     </v-sheet>
     <v-row justify="center" style="margin:20px">
-      <v-btn @click="scroll">Add Code</v-btn>
+      <v-btn @click="addCode">Add Code</v-btn>
     </v-row>
   </v-container>
 </template>
@@ -31,17 +31,22 @@
 export default {
   name: "AddCode",
   methods: {
-    scroll() {
-      this.$nextTick(() => document.getElementById('last').scrollIntoView())
+    addCode() {
+      this.$emit('code', '00000')
+      this.$nextTick(() => {
+        let pc = document.getElementsByClassName('previousCode')
+        return pc.item(pc.length - 1).scrollIntoView()
+      })
     },
     addNumber(event) {
       if (/^\d$/.test(event.key.toString())) {
-        console.log(event.srcElement.id);
+        console.log(event.key.toString())
       }
       else {
         event.preventDefault();
       }
     }
   },
+  emits: ['code']
 }
 </script>

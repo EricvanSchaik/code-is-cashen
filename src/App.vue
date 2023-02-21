@@ -46,9 +46,9 @@
           <v-col>
             <IntroText/>
             <v-divider class="my-2"></v-divider>
-            <PreviousCodes/>
+            <PreviousCodes :codes="codes"/>
             <v-divider class="my-2"></v-divider>
-            <AddCode/>
+            <AddCode @code="addCode"/>
           </v-col>
         </v-row>
       </v-container>
@@ -62,6 +62,8 @@ import PreviousCodes from './components/PreviousCodes.vue';
 import IntroText from './components/IntroText.vue';
 import AddCode from './components/AddCode.vue';
 
+let id = 0
+
 export default {
   name: 'App',
 
@@ -73,7 +75,17 @@ export default {
   },
 
   data: () => ({
-    //
+    codes: []
   }),
+
+  methods: {
+    addCode(code) {
+      this.codes.push({
+        id: id++,
+        numbers: code,
+        correct: 0
+      })
+    }
+  }
 };
 </script>

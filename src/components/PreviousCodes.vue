@@ -31,8 +31,9 @@
       <v-list-item-group>
         <template>
           <v-list-item
-            v-for="n in 10"
-            :key="n"
+            v-for="n in codes"
+            :key="n.id"
+            :class="'previousCode'"
           >
             <v-row justify="space-around">
               <v-col md="2" class="d-flex justify-center" style="flex-direction: column;">  
@@ -47,7 +48,7 @@
                     :key="i"
                   >
                   <div class="text-h5">
-                    {{ n }}
+                    {{ n.numbers[i-i] }}
                   </div>
                   </v-card>
                 </v-sheet>
@@ -56,26 +57,13 @@
                 <v-sheet class="d-flex justify-space-around">
                   <v-card class="pa-2 ma-2">
                     <div class="text-h5">
-                      {{ n }}
+                      {{ n.correct }}
                     </div>
                   </v-card>
                 </v-sheet>
               </v-col>
             </v-row>
           </v-list-item>
-          <v-list-item id="last">
-            <v-row justify="space-around">
-              <v-col md="2" class="text-center">
-                X
-              </v-col>
-              <v-col md="6" class="text-center">
-                Last
-              </v-col>
-              <v-col md="2" class="text-center">
-                X
-              </v-col>
-              </v-row>
-            </v-list-item>
         </template>
       </v-list-item-group>
     </v-list>
@@ -86,5 +74,8 @@
 <script>
 export default {
     name: "PreviousCodes",
+    props: {
+      codes: Array
+    }
 }
 </script>
