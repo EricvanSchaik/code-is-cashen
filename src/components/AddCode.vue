@@ -37,7 +37,7 @@ export default {
   methods: {
     addCode() {
       if (!this.numbers.some(el => el === null) && this.correct && this.correct < 6) {
-        this.$emit('code', this.numbers, this.correct)
+        this.$emit('addCode', this.numbers, this.correct)
         this.$nextTick(() => {
           let pc = document.getElementsByClassName('previousCode')
           return pc.item(pc.length - 1).scrollIntoView()

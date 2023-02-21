@@ -46,9 +46,9 @@
           <v-col>
             <IntroText/>
             <v-divider class="my-2"></v-divider>
-            <PreviousCodes :codes="codes"/>
+            <PreviousCodes :codes="codes" @deleteCode="deleteCode"/>
             <v-divider class="my-2"></v-divider>
-            <AddCode @code="addCode"/>
+            <AddCode @addCode="addCode"/>
           </v-col>
         </v-row>
       </v-container>
@@ -85,6 +85,9 @@ export default {
         numbers: numbers,
         correct: correct
       })
+    },
+    deleteCode(id) {
+      this.codes = this.codes.filter(code => code.id !== id)
     }
   }
 };

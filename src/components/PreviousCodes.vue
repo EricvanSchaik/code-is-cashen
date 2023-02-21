@@ -37,7 +37,7 @@
           >
             <v-row justify="space-around">
               <v-col md="2" class="d-flex justify-center" style="flex-direction: column;">  
-                <v-btn color="error" plain>
+                <v-btn color="error" plain @click="deleteCode(n.id)">
                   Delete
                 </v-btn>
               </v-col>
@@ -76,6 +76,11 @@ export default {
     name: "PreviousCodes",
     props: {
       codes: Array
-    }
+    },
+    methods: {
+      deleteCode(id) {
+        this.$emit('deleteCode', id)
+      }
+    },
 }
 </script>
