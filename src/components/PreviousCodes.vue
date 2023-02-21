@@ -48,7 +48,7 @@
                     :key="i"
                   >
                   <div class="text-h5">
-                    {{ n.numbers[i-i] }}
+                    {{ n.numbers[i-1] }}
                   </div>
                   </v-card>
                 </v-sheet>

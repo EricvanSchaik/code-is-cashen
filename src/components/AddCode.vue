@@ -16,7 +16,7 @@
         </v-col>
         <v-col md="2">
           <v-sheet class="d-flex justify-space-around" color="transparent" style="margin-right: 50px">
-            <v-text-field outlined style="max-width: 20%" maxlength="1"></v-text-field>
+            <v-text-field outlined style="max-width: 20%" maxlength="1" @keypress="addCorrect"></v-text-field>
           </v-sheet>
         </v-col>
       </v-row>
@@ -30,22 +30,37 @@
 <script>
 export default {
   name: "AddCode",
+  data: () => ({
+    numbers: [null, null, null, null, null],
+    correct: null,
+  }),
   methods: {
     addCode() {
-      this.$emit('code', '00000')
-      this.$nextTick(() => {
-        let pc = document.getElementsByClassName('previousCode')
-        return pc.item(pc.length - 1).scrollIntoView()
-      })
+      if (!this.numbers.some(el => el === null) && this.correct && this.correct < 6) {
+        this.$emit('code', this.numbers, this.correct)
+        this.$nextTick(() => {
+          let pc = document.getElementsByClassName('previousCode')
+          return pc.item(pc.length - 1).scrollIntoView()
+        })
+      }
     },
     addNumber(event) {
       if (/^\d$/.test(event.key.toString())) {
-        console.log(event.key.toString())
+        let index = event.srcElement.id[4]
+        this.numbers[index-1] = event.key.toString()
       }
       else {
         event.preventDefault();
       }
-    }
+    },
+    addCorrect(event) {
+      if (/^\d$/.test(event.key.toString())) {
+        this.correct = event.key.toString()
+      }
+      else {
+        event.preventDefault();
+      }
+    },
   },
   emits: ['code']
 }

@@ -79,11 +79,11 @@ export default {
   }),
 
   methods: {
-    addCode(code) {
+    addCode(numbers, correct) {
       this.codes.push({
         id: id++,
-        numbers: code,
-        correct: 0
+        numbers: numbers,
+        correct: correct
       })
     }
   }
