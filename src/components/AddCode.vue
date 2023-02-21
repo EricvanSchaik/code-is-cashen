@@ -6,7 +6,7 @@
         </v-col>
         <v-col md="6">
           <v-sheet class="d-flex justify-space-around mr-4" color="transparent">
-            <v-text-field outlined style="max-width: 5%;" @keypress="addNumber" maxlength="1"
+            <v-text-field outlined style="max-width: 5%;" @input="addNumber($event, i)" @keypress="validateNumber" maxlength="1"
               v-for="i in 5"
               :key="i"
               :id="'code'+i.toString()"
@@ -16,7 +16,7 @@
         </v-col>
         <v-col md="2">
           <v-sheet class="d-flex justify-space-around" color="transparent" style="margin-right: 50px">
-            <v-text-field outlined style="max-width: 20%" maxlength="1" @keypress="addCorrect"></v-text-field>
+            <v-text-field outlined style="max-width: 20%" maxlength="1" @input="addCorrect" @keypress="validateCorrect"></v-text-field>
           </v-sheet>
         </v-col>
       </v-row>
@@ -44,23 +44,26 @@ export default {
         })
       }
     },
-    addNumber(event) {
-      if (/^\d$/.test(event.key.toString())) {
-        const numberIndex = event.srcElement.id[4]
-        this.numbers[numberIndex-1] = event.key.toString()
+    addNumber(number, i) {
+      if (/^\d$/.test(number.toString())) {
+        this.numbers[i-1] = number.toString()
       }
-      else {
+    },
+    validateNumber(event) {
+      if (!/^\d$/.test(event.key.toString())) {
         event.preventDefault();
       }
     },
-    addCorrect(event) {
-      if (/^\d$/.test(event.key.toString())) {
-        this.correct = event.key.toString()
-      }
-      else {
-        event.preventDefault();
+    addCorrect(number) {
+      if (/^\d$/.test(number.toString()) && number < 6) {
+        this.correct = number.toString()
       }
     },
+    validateCorrect(event) {
+      if (!/^\d$/.test(event.key.toString()) || event.key.toString() > 5) {
+        event.preventDefault();
+      }
+    }
   },
   emits: ['code']
 }
