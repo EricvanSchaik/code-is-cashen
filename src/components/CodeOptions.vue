@@ -53,7 +53,8 @@ function nextNumber(code, index, number) {
 
 function checkNumberValid(code, prevCodes, currentIndex) {
   const powerSet = findPowerset(currentIndex)
-  for (const set in powerSet) {
+  for (let setIndex = 0; setIndex < powerSet.length; setIndex++) {
+    let set = powerSet[setIndex]
     for (let prevIndex = 0; prevIndex < prevCodes.length; prevIndex++) {
       const prevCode = prevCodes[prevIndex]
       let similarCode = true
@@ -66,7 +67,7 @@ function checkNumberValid(code, prevCodes, currentIndex) {
         similarCode = false
       }
       if (similarCode) {
-        if (prevCode.correct <= set.length) {
+        if (prevCode.correct < (set.length+1)) {
           return false
         }
       }
@@ -92,7 +93,6 @@ export default {
             if (checkNumberValid(code, this.prevCodes, index)) {
               if (index == 4) {
                 result.push([...code])
-                console.log(result)
                 ;[index, number] = nextNumber(code, index, number)
                 if (!index) {
                   return result
@@ -100,6 +100,7 @@ export default {
               }
               else {
                 index++
+                number = 0
               }
             }
             else {
