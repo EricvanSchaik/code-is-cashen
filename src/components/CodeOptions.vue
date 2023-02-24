@@ -14,7 +14,7 @@
           </v-list-item-title>
         </v-list-item-content>
       </v-list-item>
-      <v-divider class="my-2"></v-divider>
+      <!-- <v-divider class="my-2"></v-divider>
       <v-list-item
         link
       >
@@ -23,7 +23,7 @@
             Next
           </v-list-item-title>
         </v-list-item-content>
-      </v-list-item>
+      </v-list-item> -->
     </v-list>
   </v-sheet>
 </template>
@@ -89,7 +89,6 @@ export default {
     computed: {
       possibleCodes() {
         let result = []
-        if (this.prevCodes.length > 0) {
           let index = 0
           let number = 0
           let code = []
@@ -115,7 +114,6 @@ export default {
               }
             }
           }
-        }
         return result
       }
     }
