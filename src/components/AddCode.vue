@@ -49,7 +49,11 @@ export default {
         let code = this.prevCodes[codeIndex]
         if (compareArrays(code.numbers, this.numbers)) {
           codeExists = true
+          alert('This code has already been entered')
         }
+      }
+      if (this.numbers.some(el => el === null) || !this.correct) {
+        alert('Please fill in all five digits and how many are correct')
       }
       if (!this.numbers.some(el => el === null) && this.correct && this.correct < 6 && !codeExists) {
         this.$emit('addCode', [...this.numbers], this.correct)
