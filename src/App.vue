@@ -39,7 +39,7 @@
             <v-divider class="my-2"></v-divider>
             <PreviousCodes :codes="codes" @deleteCode="deleteCode"/>
             <v-divider class="my-2"></v-divider>
-            <AddCode @addCode="addCode"/>
+            <AddCode @addCode="addCode" :prevCodes="codes"/>
           </v-col>
         </v-row>
       </v-container>

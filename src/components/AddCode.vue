@@ -28,15 +28,30 @@
 </template>
 
 <script>
+
+function compareArrays(ar1, ar2) {
+  return JSON.stringify(ar1) == JSON.stringify(ar2)
+}
+
 export default {
   name: "AddCode",
   data: () => ({
     numbers: [null, null, null, null, null],
     correct: null,
   }),
+  props: {
+    prevCodes: Array
+  },
   methods: {
     addCode() {
-      if (!this.numbers.some(el => el === null) && this.correct && this.correct < 6) {
+      let codeExists = false
+      for (let codeIndex = 0; codeIndex < this.prevCodes.length; codeIndex++) {
+        let code = this.prevCodes[codeIndex]
+        if (compareArrays(code.numbers, this.numbers)) {
+          codeExists = true
+        }
+      }
+      if (!this.numbers.some(el => el === null) && this.correct && this.correct < 6 && !codeExists) {
         this.$emit('addCode', [...this.numbers], this.correct)
         this.$nextTick(() => {
           let pc = document.getElementsByClassName('previousCode')
