@@ -1,8 +1,13 @@
 <template>
   <v-sheet
+    class="text-center"
     rounded="lg"
     min-height="268"
   >
+    <div class="text-h5 pa-2">
+      Possible Codes
+    </div>
+    <v-divider class="my-2"></v-divider>
     <v-list color="transparent">
       <v-list-item
         v-for="n in this.possibleCodes"
@@ -14,16 +19,6 @@
           </v-list-item-title>
         </v-list-item-content>
       </v-list-item>
-      <!-- <v-divider class="my-2"></v-divider>
-      <v-list-item
-        link
-      >
-        <v-list-item-content>
-          <v-list-item-title>
-            Next
-          </v-list-item-title>
-        </v-list-item-content>
-      </v-list-item> -->
     </v-list>
   </v-sheet>
 </template>
