@@ -41,7 +41,7 @@
       <v-container>
         <v-row>
           <v-col cols="2">
-            <CodeOptions/>
+            <CodeOptions :prevCodes="codes"/>
           </v-col>
           <v-col>
             <IntroText/>
