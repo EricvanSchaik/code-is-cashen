@@ -10,12 +10,16 @@
     <v-divider class="my-2"></v-divider>
     <v-list color="transparent">
       <v-list-item
-        v-for="n in this.possibleCodes"
-        :key="n.index"
+        v-for="code in this.possibleCodes"
+        :key="code.index"
       >
         <v-list-item-content>
           <v-list-item-title>
-            {{ n }}
+            <span
+              v-for="digit in code.slice(0, code.length-1)"
+              :key="digit"
+            > {{ digit }} - </span>
+            <span> {{ code[code.length-1] }} </span>
           </v-list-item-title>
         </v-list-item-content>
       </v-list-item>
