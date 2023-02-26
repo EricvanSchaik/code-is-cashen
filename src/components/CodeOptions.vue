@@ -16,7 +16,7 @@
         <v-list-item-content>
           <v-list-item-title>
             <span
-              v-for="digit in code"
+              v-for="digit in code.slice(0, code.length - 1)"
               :key="digit.index"
             > {{ digit }} - </span>
             <span> {{ code[code.length-1] }} </span>
