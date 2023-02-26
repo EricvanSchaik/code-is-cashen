@@ -63,6 +63,8 @@ export default {
         this.$emit('addCode', [...this.numbers], this.correct)
         this.$nextTick(() => {
           let pc = document.getElementsByClassName('previousCode')
+          this.numbers = [null, null, null, null, null]
+          this.correct = null
           return pc.item(pc.length - 1).scrollIntoView()
         })
       }
