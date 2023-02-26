@@ -28,52 +28,33 @@
 </template>
 
 <script>
-import { setPowerset } from 'mathjs'
 
-function findPowerset(maxIndex) {
-  let set = []
-  for (let i = 0; i < maxIndex; i++) {
-    set.push(i)
-  }
-  let result = setPowerset(set)
-  if (set.length == 0) {
-    result = [[]]
-  }
-  return result
-}
-
-function nextNumber(code, index, number) {
-  number++
-  while (number > 9) {
-    index--
-    if (index == -1) {
-      return [undefined, undefined]
+function nextCode(code) {
+  for (let index = code.length-1; index >= 0; index--) {
+    if (code[index] < 9) {
+      code[index] = code[index] + 1
+      return code
     }
-    number = parseInt(code[index])
-    number++
+    else {
+      code[index] = 0
+    }
   }
-  return [index, number]
+  return undefined
 }
 
-function checkNumberValid(code, prevCodes, currentIndex) {
-  const powerSet = findPowerset(currentIndex)
-  for (let setIndex = 0; setIndex < powerSet.length; setIndex++) {
-    let set = powerSet[setIndex]
+function checkCodeValid(code, prevCodes) {
+  if (prevCodes) {
     for (let prevIndex = 0; prevIndex < prevCodes.length; prevIndex++) {
-      const prevCode = prevCodes[prevIndex]
-      let similarCode = true
-      for (const index in set) {
-        if (!(prevCode.numbers[index] == code[index])) {
-          similarCode = false
+      let prevCode = prevCodes[prevIndex]
+      let correct = 0
+      for (let index = 0; index < prevCode.numbers.length; index++) {
+        if (prevCode.numbers[index] == code[index]) {
+          correct++
         }
       }
-      if (!(prevCode.numbers[currentIndex] == code[currentIndex])) {
-        similarCode = false
-      }
-      if (similarCode) {
-        if (prevCode.correct < (set.length+1)) {
-          return false
-        }
+      console.log(correct)
+      if (!(prevCode.correct == correct)) {
+        return false
       }
     }
   }
@@ -89,31 +70,16 @@ export default {
     computed: {
       possibleCodes() {
         let result = []
-          let index = 0
-          let number = 0
-          let code = []
-          while (result.length < 10) {
-            code[index] = number.toString()
-            if (checkNumberValid(code, this.prevCodes, index)) {
-              if (index == 4) {
-                result.push([...code])
-                ;[index, number] = nextNumber(code, index, number)
-                if (!index) {
-                  return result
-                }
-              }
-              else {
-                index++
-                number = 0
-              }
-            }
-            else {
-              [index, number] = nextNumber(code, index, number)
-              if (index == undefined) {
-                return result
-              }
-            }
+        let code = [0,0,0,0,0]
+        while (result.length < 10) {
+          if (checkCodeValid(code, this.prevCodes)) {
+            result.push([...code])
           }
+          code = nextCode([...code])
+          if (!code) {
+            return result
+          }
+        }
         return result
       }
     }
