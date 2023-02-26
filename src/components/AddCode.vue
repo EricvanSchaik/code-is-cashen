@@ -33,6 +33,10 @@ function compareArrays(ar1, ar2) {
   return JSON.stringify(ar1) == JSON.stringify(ar2)
 }
 
+function isDigit(symbol) {
+  return (/^\d$/.test(symbol.toString()))
+}
+
 export default {
   name: "AddCode",
   data: () => ({
@@ -64,22 +68,24 @@ export default {
       }
     },
     addNumber(number, i) {
-      if (/^\d$/.test(number.toString())) {
+      if (isDigit(number)) {
         this.numbers[i-1] = number.toString()
       }
     },
     validateNumber(event) {
-      if (!/^\d$/.test(event.key.toString())) {
+      if (!isDigit(event.key)) {
+        alert('Please enter a number')
         event.preventDefault();
       }
     },
     addCorrect(number) {
-      if (/^\d$/.test(number.toString()) && number < 5) {
+      if (isDigit(number) && number < 5) {
         this.correct = number.toString()
       }
     },
     validateCorrect(event) {
-      if (!/^\d$/.test(event.key.toString()) || event.key.toString() > 4) {
+      if (!isDigit(event.key) || event.key.toString() > 4) {
+        alert('Please enter a number lower than 5')
         event.preventDefault();
       }
     }
