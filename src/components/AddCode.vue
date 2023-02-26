@@ -74,12 +74,12 @@ export default {
       }
     },
     addCorrect(number) {
-      if (/^\d$/.test(number.toString()) && number < 6) {
+      if (/^\d$/.test(number.toString()) && number < 5) {
         this.correct = number.toString()
       }
     },
     validateCorrect(event) {
-      if (!/^\d$/.test(event.key.toString()) || event.key.toString() > 5) {
+      if (!/^\d$/.test(event.key.toString()) || event.key.toString() > 4) {
         event.preventDefault();
       }
     }

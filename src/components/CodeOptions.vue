@@ -52,7 +52,6 @@ function checkCodeValid(code, prevCodes) {
           correct++
         }
       }
-      console.log(correct)
       if (!(prevCode.correct == correct)) {
         return false
       }

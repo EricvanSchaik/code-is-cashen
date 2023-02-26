@@ -7,7 +7,7 @@
     >
       <div class="d-flex align-center">
         <v-img
-          alt="Vuetify Name"
+          alt="Radio 538"
           class="shrink mt-1 hidden-sm-and-down"
           contain
           min-width="100"
@@ -32,14 +32,14 @@
       <v-container>
         <v-row>
           <v-col cols="2">
-            <CodeOptions :prevCodes="codes"/>
+            <CodeOptions :prevCodes="prevCodes"/>
           </v-col>
           <v-col>
             <IntroText/>
             <v-divider class="my-2"></v-divider>
-            <PreviousCodes :codes="codes" @deleteCode="deleteCode"/>
+            <PreviousCodes :codes="prevCodes" @deleteCode="deleteCode"/>
             <v-divider class="my-2"></v-divider>
-            <AddCode @addCode="addCode" :prevCodes="codes"/>
+            <AddCode :prevCodes="prevCodes" @addCode="addCode"/>
           </v-col>
         </v-row>
       </v-container>
@@ -66,19 +66,19 @@ export default {
   },
 
   data: () => ({
-    codes: []
+    prevCodes: []
   }),
 
   methods: {
     addCode(numbers, correct) {
-      this.codes.push({
+      this.prevCodes.push({
         id: id++,
         numbers: numbers,
         correct: correct
       })
     },
     deleteCode(id) {
-      this.codes = this.codes.filter(code => code.id !== id)
+      this.prevCodes = this.prevCodes.filter(code => code.id !== id)
     }
   }
 };
