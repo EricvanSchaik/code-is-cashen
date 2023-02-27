@@ -6,7 +6,7 @@
         </v-col>
         <v-col md="6">
           <v-sheet class="d-flex justify-space-around mr-4" color="transparent">
-            <v-text-field outlined style="max-width: 5%;" v-model="numbers[i-1]" @keypress="validateNumber" maxlength="1"
+            <v-text-field outlined style="max-width: 35px" v-model="numbers[i-1]" @keypress="validateNumber" maxlength="1"
               v-for="i in 5"
               :key="i"
               :id="'code'+i.toString()"
@@ -16,7 +16,7 @@
         </v-col>
         <v-col md="2">
           <v-sheet class="d-flex justify-space-around" color="transparent" style="margin-right: 50px">
-            <v-text-field outlined style="max-width: 20%" v-model="correct" @keypress="validateCorrect" maxlength="1"></v-text-field>
+            <v-text-field outlined style="max-width: 35px" v-model="correct" @keypress="validateCorrect" maxlength="1"></v-text-field>
           </v-sheet>
         </v-col>
       </v-row>

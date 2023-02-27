@@ -31,7 +31,7 @@
     <v-main class="grey lighten-3">
       <v-container>
         <v-row>
-          <v-col cols="2">
+          <v-col cols="12" sm="2">
             <CodeOptions :prevCodes="prevCodes"/>
           </v-col>
           <v-col>
