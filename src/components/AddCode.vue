@@ -2,7 +2,7 @@
   <v-container style="padding:0px">
     <v-sheet rounded="lg" class="pt-5 pb-1">
       <v-row justify="space-around">
-        <v-col md="2">
+        <v-col md="2" class="d-none d-sm-flex">
         </v-col>
         <v-col md="6">
           <v-sheet class="d-flex justify-space-around mr-4" color="transparent">
